@@ -1,0 +1,1 @@
+An attempt to re-create the MS-DOS classic Round 42 in C#. Intended as a practice project.
