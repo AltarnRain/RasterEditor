@@ -18,6 +18,11 @@ namespace Render
     public class ImageGenerator
     {
         /// <summary>
+        /// The image map part size
+        /// </summary>
+        private const int ImageMapPartSize = 128;
+
+        /// <summary>
         /// Renders the shape to bitmap.
         /// </summary>
         /// <param name="shapeModel">The shape model.</param>
@@ -59,19 +64,18 @@ namespace Render
                 allBitmaps.Add(RenderShapeToBitmap(shape));
             }
 
-            var width = allBitmaps.Count() * 256;
+            var width = allBitmaps.Count() * ImageMapPartSize;
             var height = allBitmaps.Select(b => b.Height).Max();
 
-            var bitmap = new Bitmap(width, 256, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+            var bitmap = new Bitmap(width, ImageMapPartSize, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
 
             var g = Graphics.FromImage(bitmap);
 
             var bitmapCounter = 0;
             foreach (var bm in allBitmaps)
             {
-                const int imageMapPartSize = 128;
-                var x = (imageMapPartSize * bitmapCounter) + (256 / 2) - (bm.Width / 2);
-                var y = (256 / 2) - (bm.Height / 2);
+                var x = (ImageMapPartSize * bitmapCounter) + (ImageMapPartSize / 2) - (bm.Width / 2);
+                var y = (ImageMapPartSize / 2) - (bm.Height / 2);
                 g.DrawImage(bm, x, y, bm.Width, bm.Height);
                 bitmapCounter++;
             }
