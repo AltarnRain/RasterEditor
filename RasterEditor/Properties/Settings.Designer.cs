@@ -25,18 +25,6 @@ namespace RasterEditor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string AssetFile {
-            get {
-                return ((string)(this["AssetFile"]));
-            }
-            set {
-                this["AssetFile"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
         public int ZoomLevel {
             get {
@@ -92,18 +80,6 @@ namespace RasterEditor.Properties {
             }
             set {
                 this["Height"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\Reps\\RasterEditor\\Images\\")]
-        public string RenderOutput {
-            get {
-                return ((string)(this["RenderOutput"]));
-            }
-            set {
-                this["RenderOutput"] = value;
             }
         }
     }

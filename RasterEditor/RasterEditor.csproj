@@ -94,7 +94,6 @@
     <Compile Include="Factories\DrawerFactory.cs" />
     <Compile Include="Factories\PaletFactory.cs" />
     <Compile Include="Factories\PreviewBarFactory.cs" />
-    <Compile Include="Factories\RenderFactory.cs" />
     <Compile Include="Factories\ViewFactory.cs" />
     <Compile Include="Forms\AssetEditor.cs">
       <SubType>Form</SubType>

@@ -7,6 +7,7 @@ namespace RasterEditor.AssetEditor.Forms
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Drawing;
     using System.IO;
     using System.Linq;
     using System.Windows.Forms;
@@ -17,8 +18,8 @@ namespace RasterEditor.AssetEditor.Forms
     using RasterEditor.Factories;
     using RasterEditor.Managers;
     using RasterEditor.Models.Drawing;
-    using RasterEditor.Models.Enumerators;
     using RasterEditor.Properties;
+    using Render;
 
     /// <summary>
     /// Editor for assets
@@ -52,11 +53,6 @@ namespace RasterEditor.AssetEditor.Forms
         private readonly PaletFactory paletFactory;
 
         /// <summary>
-        /// The render factory
-        /// </summary>
-        private readonly RenderFactory renderFactory;
-
-        /// <summary>
         /// The preview bar factory
         /// </summary>
         private readonly PreviewBarFactory previewBarFactory;
@@ -65,14 +61,6 @@ namespace RasterEditor.AssetEditor.Forms
         /// The file location provider
         /// </summary>
         private readonly FileLocationProvider fileLocationProvider;
-
-        /// <summary>
-        /// Gets the asset provider.
-        /// </summary>
-        /// <value>
-        /// The asset provider.
-        /// </value>
-        private readonly AssetProvider assetProvider;
 
         /// <summary>
         /// Gets the drawer.
@@ -96,32 +84,25 @@ namespace RasterEditor.AssetEditor.Forms
         /// Initializes a new instance of the <see cref="AssetEditor" /> class.
         /// </summary>
         /// <param name="assetManagerFactory">The asset manager factory.</param>
-        /// <param name="assetProvider">The asset provider.</param>
         /// <param name="viewFactory">The view factory.</param>
         /// <param name="drawerFactory">The drawer factory.</param>
         /// <param name="paletFactory">The palet factory.</param>
-        /// <param name="renderFactory">The render factory.</param>
         /// <param name="previewBarFactory">The preview bar factory.</param>
         /// <param name="fileLocationProvider">The file location provider.</param>
         public AssetEditor(
             AssetManagerFactory assetManagerFactory,
-            AssetProvider assetProvider,
             ViewFactory viewFactory,
             DrawerFactory drawerFactory,
             PaletFactory paletFactory,
-            RenderFactory renderFactory,
             PreviewBarFactory previewBarFactory,
             FileLocationProvider fileLocationProvider)
         {
             this.InitializeComponent();
-            this.assetProvider = assetProvider;
             this.viewFactory = viewFactory;
             this.drawerFactory = drawerFactory;
             this.paletFactory = paletFactory;
-            this.renderFactory = renderFactory;
             this.previewBarFactory = previewBarFactory;
             this.fileLocationProvider = fileLocationProvider;
-            var mainAssetFile = Path.Combine(Directory.GetCurrentDirectory(), AssetFile);
             this.assetManager = assetManagerFactory.Get(this.fileLocationProvider.AssetFile, false);
             this.palet = this.paletFactory.Get(this.PaletPanel);
             this.drawer = this.drawerFactory.Get(this.DrawerPanel);
@@ -541,16 +522,12 @@ namespace RasterEditor.AssetEditor.Forms
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void RenderAllAssetsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var render = this.renderFactory.Get(Settings.Default.RenderOutput);
+            var spriteMap = ImageGenerator.RenderToSpriteMap(this.assetManager.CurrentAsset.Shapes);
 
-            var cnt = 1;
-            foreach (var frame in this.assetManager.CurrentAsset.Shapes)
-            {
-                render.RenderShapeToBitmapFile(frame, Settings.Default.RenderOutput, this.assetManager.CurrentAsset.Name, cnt);
-                cnt++;
-            }
+            var fileName = $@"{this.fileLocationProvider.ImageFolder}\{this.assetManager.CurrentAsset.Name}.png";
+            spriteMap.Save(fileName);
 
-            Process.Start(Settings.Default.RenderOutput);
+            Process.Start(fileName);
         }
     }
 }

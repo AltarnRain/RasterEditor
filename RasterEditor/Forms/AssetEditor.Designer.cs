@@ -48,8 +48,6 @@
             this.PreviewBar = new System.Windows.Forms.Panel();
             this.PaletPanel = new System.Windows.Forms.Panel();
             this.Tools = new System.Windows.Forms.Panel();
-            this.AssetType = new System.Windows.Forms.ComboBox();
-            this.AnimationStyle = new System.Windows.Forms.ComboBox();
             this.SetAnchorButton = new System.Windows.Forms.Button();
             this.ButtonSize = new System.Windows.Forms.TrackBar();
             this.RemoveTopRowButton = new System.Windows.Forms.Button();
@@ -172,7 +170,7 @@
             // 
             this.renderAllAssetsToolStripMenuItem.Name = "renderAllAssetsToolStripMenuItem";
             this.renderAllAssetsToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.renderAllAssetsToolStripMenuItem.Text = "Render all assets";
+            this.renderAllAssetsToolStripMenuItem.Text = "Render current asset";
             this.renderAllAssetsToolStripMenuItem.Click += new System.EventHandler(this.RenderAllAssetsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -243,8 +241,6 @@
             // Tools
             // 
             this.Tools.BackColor = System.Drawing.Color.Silver;
-            this.Tools.Controls.Add(this.AssetType);
-            this.Tools.Controls.Add(this.AnimationStyle);
             this.Tools.Controls.Add(this.SetAnchorButton);
             this.Tools.Controls.Add(this.ButtonSize);
             this.Tools.Controls.Add(this.RemoveTopRowButton);
@@ -270,20 +266,6 @@
             this.Tools.Name = "Tools";
             this.Tools.Size = new System.Drawing.Size(128, 487);
             this.Tools.TabIndex = 0;
-            // 
-            // AssetType
-            // 
-            this.AssetType.Location = new System.Drawing.Point(0, 0);
-            this.AssetType.Name = "AssetType";
-            this.AssetType.Size = new System.Drawing.Size(121, 21);
-            this.AssetType.TabIndex = 0;
-            // 
-            // AnimationStyle
-            // 
-            this.AnimationStyle.Location = new System.Drawing.Point(0, 0);
-            this.AnimationStyle.Name = "AnimationStyle";
-            this.AnimationStyle.Size = new System.Drawing.Size(121, 21);
-            this.AnimationStyle.TabIndex = 25;
             // 
             // SetAnchorButton
             // 
@@ -562,8 +544,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem renderAllAssetsToolStripMenuItem;
         private System.Windows.Forms.Panel PreviewBar;
-        private System.Windows.Forms.ComboBox AnimationStyle;
-        private System.Windows.Forms.ComboBox AssetType;
     }
 }
 

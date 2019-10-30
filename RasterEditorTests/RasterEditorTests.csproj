@@ -47,7 +47,6 @@
     <Compile Include="Factories\AssetManagerFactoryTests.cs" />
     <Compile Include="Factories\DrawerFactoryTests.cs" />
     <Compile Include="Factories\PaletFactoryTests.cs" />
-    <Compile Include="Factories\RenderFactoryTests.cs" />
     <Compile Include="Providers\AssetProviderTests.cs" />
     <Compile Include="Providers\ShapeProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

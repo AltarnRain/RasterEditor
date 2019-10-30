@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RasterEditor.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="AssetFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="ZoomLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
@@ -19,9 +16,6 @@
     </Setting>
     <Setting Name="Height" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="RenderOutput" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\Reps\RasterEditor\Images\</Value>
     </Setting>
   </Settings>
 </SettingsFile>

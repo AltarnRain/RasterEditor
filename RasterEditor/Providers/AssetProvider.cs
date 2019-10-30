@@ -6,7 +6,6 @@ namespace RasterEditor.Providers
 {
     using System.Collections.Generic;
     using RasterEditor.Models.Drawing;
-    using RasterEditor.Models.Enumerators;
 
     /// <summary>
     /// Provides an Asset.

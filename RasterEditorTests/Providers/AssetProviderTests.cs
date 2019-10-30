@@ -26,7 +26,6 @@ namespace RasterEditor.Tests
             Assert.AreEqual(5 * 6, model.Shapes.First().Blocks.Count());
             Assert.AreEqual(3, model.Shapes.Count());
             Assert.AreEqual("PlayerShip", model.Name);
-            Assert.AreEqual(AssetTypes.Enemy, model.AssetType);
         }
     }
 }

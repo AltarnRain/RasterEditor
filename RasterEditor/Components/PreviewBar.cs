@@ -19,11 +19,6 @@ namespace RasterEditor.CustomComponents.Components
     public class PreviewBar
     {
         /// <summary>
-        /// The image generator
-        /// </summary>
-        private readonly ImageGenerator imageGenerator;
-
-        /// <summary>
         /// The panel
         /// </summary>
         private readonly Panel panel;
@@ -31,11 +26,9 @@ namespace RasterEditor.CustomComponents.Components
         /// <summary>
         /// Initializes a new instance of the <see cref="PreviewBar"/> class.
         /// </summary>
-        /// <param name="imageGenerator">The image generator.</param>
         /// <param name="panel">The panel.</param>
-        public PreviewBar(ImageGenerator imageGenerator, Panel panel)
+        public PreviewBar(Panel panel)
         {
-            this.imageGenerator = imageGenerator;
             this.panel = panel;
 
             this.panel.AutoScroll = true;
@@ -82,8 +75,8 @@ namespace RasterEditor.CustomComponents.Components
             {
                 var mainPanel = new Panel();
                 var image = new Panel();
-                var bitmap = this.imageGenerator.RenderShapeToBitmap(shape);
 
+                var bitmap = ImageGenerator.RenderShapeToBitmap(shape);
                 image.Width = bitmap.Width;
                 image.Height = bitmap.Height;
                 image.Top = 0;
@@ -91,8 +84,8 @@ namespace RasterEditor.CustomComponents.Components
                 image.BorderStyle = BorderStyle.Fixed3D;
                 image.Tag = index;
                 image.Click += this.OnDrawSurfaceClick;
-                image.BackgroundImage = bitmap;
                 image.BackColor = CGA16Colors.Black.GetColor();
+                image.BackgroundImage = bitmap;
 
                 var moveLeftButton = this.CreateMovebutton("<", this.MoveLeft);
                 var moveRightButton = this.CreateMovebutton(">", this.MoveRight);
